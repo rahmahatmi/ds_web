@@ -1,0 +1,11 @@
+# Infrastructure de développement.
+# Le cahier des charges interdit les bases de données : les microservices
+# stockent leurs données en mémoire, seul Zipkin est donc lancé ici.
+#   docker compose up -d      ->  http://localhost:9411
+services:
+  zipkin:
+    image: openzipkin/zipkin:latest
+    container_name: driveeasy-zipkin
+    ports:
+      - "9411:9411"
+    restart: unless-stopped
